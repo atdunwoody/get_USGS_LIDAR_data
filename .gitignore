@@ -1,3 +1,7 @@
+#Data folders to ignore
+2020 LIDAR/
+2021 LIDAR/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
