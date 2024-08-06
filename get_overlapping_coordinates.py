@@ -31,7 +31,6 @@ def get_overlapping_coordinates(base_url, project_list):
     url_list = []
     for project in project_list:
         url_list.append(base_url + project + "/TIFF/")
-    print(url_list)
     
     #create dictionary to store coordinates and files
     coordinate_dict = defaultdict(list)
@@ -40,7 +39,7 @@ def get_overlapping_coordinates(base_url, project_list):
     for url in url_list:
         # List of tif files
         tif_files = list_tif_files(url)
-        #print(tif_files)
+        print(tif_files)
         
         # Extract coordinates and add to dictionary
         for tif_file in tif_files:
@@ -71,19 +70,25 @@ def main():
     project_list = [
                     "CO_CameronPeakWildfire_2021_D21", 
                     #"CO_DRCOG_2020_B20",
-                    "CO_SoPlatteRiver_Lot2a_2013",
-                    #"CO_SoPlatteRiver_Lot3_2013"
+                    #"CO_SoPlatteRiver_Lot2a_2013",
+                    "CO_SoPlatte_Lot3_2013"
                     ]
 
     overlapping_files = get_overlapping_coordinates(base_url, project_list)
+    #print out overlapping_files for each project
+    for project, files in overlapping_files.items():
+        print(f"\nProject: {project}")
+        for file in files:
+            print(f"  {file}")
     for project, files in overlapping_files.items():
         download_url = base_download_url + project + "/TIFF/"
         #search for project in overlapping_files and create a list of coordinates
         for file in files:
             file_download_url = download_url + file
+            save_file_path = os.path.join(output_dir, project, file)
             print(file_download_url)
             print(f"Downloading: {file}")
-            download_file(file_download_url, file)
+            download_file(file_download_url, save_file_path)
 
         
 
