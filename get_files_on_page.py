@@ -14,6 +14,6 @@ def list_tif_files(url):
     return tif_files
 
 # URL to scrape
-url = "https://rockyweb.usgs.gov/vdelivery/Datasets/Staged/Elevation/1m/Projects/CO_SoPlatteRiver_Lot2a_2013/TIFF/"
+url = "https://rockyweb.usgs.gov/vdelivery/Datasets/Staged/Elevation/1m/Projects/OR_Wallowa_2015/TIFF/"
 tif_files = list_tif_files(url)
 print(tif_files)
